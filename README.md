@@ -1,7 +1,8 @@
 # wechatBot
 
+下载地址:[https://github.com/Campanulata/wechatBot](https://github.com/Campanulata/wechatBot)
 微信机器人 私聊发送消息 无延迟。
-微信接口:可爱猫
+微信接口:[可爱猫官网](http://www.keaimao.com/)
 
 ## 一、安装
 
@@ -9,7 +10,7 @@
 
 * Setup_5.6.8.52.exe
 * vscode.exe
-* python.ex
+* python.exe(安装时勾选Add Path to···)
 
 ## 二、打开可爱猫微信
 
@@ -91,10 +92,10 @@
 2. 打开vscode——单击getFriendListWithWin10.py——F5运行——此时可以得到friendList.xlsx
 3. 工作台导出学员信息粘贴到数据库表中，此时wxid列会自动生成，没有生成的可能有以下原因
 
-* 未添加微信好友
-* 微信好友未改备注
-* friendList.xlsx中的学生姓名有多余字符
-把多余字符按格式添加到getFriendListWithWin10.py的第10行，然后重新F5运行
-* 如果还未全部生成可自行排查或者直接手动从friendList中粘贴到数据库
+   * 未添加微信好友
+   * 微信好友未改备注
+   * friendList.xlsx中的学生姓名有多余字符
+   把多余字符按格式添加到getFriendListWithWin10.py的第10行，然后重新F5运行
+   * 如果还未全部生成可自行排查或者直接手动从friendList中粘贴到数据库
 
 4. 打开textMsg——确保每条数据都有wxid——F5运行——即可全部发送完成
