@@ -5,7 +5,7 @@ import xlsxwriter
 from api import *
 from flask import Flask, request, jsonify
 # 读取test文件
-df = pd.read_excel('test.xlsx')
+df = pd.read_excel('sendMsg.xlsx')
 
 
 # 获取自己的微信id
