@@ -1,6 +1,8 @@
 # wechatBot
 
-下载地址:[https://github.com/Campanulata/wechatBot](https://github.com/Campanulata/wechatBot)
+项目地址:[https://github.com/Campanulata/wechatBot](https://github.com/Campanulata/wechatBot)
+单击 clone or download——download zip 即可下载
+
 微信机器人 私聊发送消息 无延迟。
 微信接口:[可爱猫官网](http://www.keaimao.com/)
 
