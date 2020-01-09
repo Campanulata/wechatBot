@@ -3,3 +3,4 @@ requests==2.20.0
 xlrd
 pandas
 xlsxwriter
+pylint
