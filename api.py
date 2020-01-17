@@ -6,7 +6,7 @@
 # @description='根据官方提供的PHP版API翻译后的API插件 Q 257386'
 import requests
 import json
-
+import time
 """
 【事件数值】             【事件描述】
 100                       私聊消息
@@ -320,6 +320,7 @@ def get_friend_list(robwxid='', is_refresh=0):
     * @param  string is_refresh 是否刷新
     * @return string 当前框架已登录的账号信息列表
     """
+    time.sleep(5)
     data = dict()
     data['type'] = 204  # Api数值（可以参考 - api列表demo）
     data['robot_wxid'] = robwxid  # 账户id（可选，如果填空字符串，即取所有登录账号的好友列表，反正取指定账号的列表）
