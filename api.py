@@ -78,6 +78,7 @@ def send_text_msg(robwxid, to_wxid, msg):
     * @param  string msg     消息内容
     * @return string json_string
     """
+    time.sleep(5)
     data = dict()
     data['type'] = 100  # Api数值（可以参考 - api列表demo）
     data['msg'] = requests.utils.quote(msg)  # 发送内容
@@ -320,7 +321,6 @@ def get_friend_list(robwxid='', is_refresh=0):
     * @param  string is_refresh 是否刷新
     * @return string 当前框架已登录的账号信息列表
     """
-    time.sleep(5)
     data = dict()
     data['type'] = 204  # Api数值（可以参考 - api列表demo）
     data['robot_wxid'] = robwxid  # 账户id（可选，如果填空字符串，即取所有登录账号的好友列表，反正取指定账号的列表）
