@@ -15,7 +15,7 @@ def feedback(time_live, grade, name):
     if time_live > 100:
         str1 = '一共听了' + str(time_live) + '分钟的直播课程，继续保持~'
     elif time_live > 0:
-        str1 = '早上可能来晚了，只听了' + str(time_live) + '分钟的直播课程，剩下的可以看一下回放~'
+        str1 = '昨天中午可能来晚了，只听了' + str(time_live) + '分钟的直播课程，剩下的可以看一下回放~'
     elif time_live == 0:
         str1 = '孩子由于时间原因没有参加今天的直播课，'
 
@@ -26,7 +26,7 @@ def feedback(time_live, grade, name):
     else:
         str2 = '然后作业已经改完了，掌握的很不错，得了' + str(grade) + '分，加油~'
 
-    str0 = '家长你好，和您反馈一下' + str(name) + '的物理学习情况：今天学习的是功和功率，'
+    str0 = '家长你好，和您反馈一下' + str(name) + '的物理学习情况：昨天学习的是功和功率，'
     str3 = '^_^'
 
     str_all = str0 + str1 + str2 + str3
@@ -63,7 +63,7 @@ print('打开该目录下的文件：feedback.xlsx')
 
 # 读取 pd.read_excel(r'D:/source.xlsx', usecols='A:D,H')
 df = pd.read_excel('./学情反馈解决方案/data.xlsx')          # 读取数据源表
-df = df['live'].astype('int')
+df[['live', 'sum']] = df[['live', 'sum']].astype(int)
 # df['未提交作业次数'] = df.apply(lambda row: DiffValue(row['作业提交']), axis=1)
 
 
