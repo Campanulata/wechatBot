@@ -5,24 +5,28 @@ def DiffValue(fraction):
     denominator = int(denominator)
     return denominator - molecule
 
+def leftOfSlash(fraction):
+    molecule = fraction.split('/')[0]
+    molecule = int(molecule)
+    return molecule
 
 def feedback(time_live, grade, name):
     if time_live > 100:
-        str1 = '一共听了' + str(time_live) + '分钟的直播课程，继续保持~'
+        str1 = '一共听了' + str(time_live) + '分钟的直播课程，非常好/:strong~'
     elif time_live > 0:
-        str1 = '昨天中午可能来晚了，只听了' + str(time_live) + '分钟的直播课程，剩下的可以看一下回放~'
+        str1 = '没有坚持听完，只听了' + str(time_live) + '分钟的直播课程，剩下的尽快补一下回放，千万不要影响明天的课程~'
     elif time_live == 0:
         str1 = '孩子由于时间原因没有参加今天的直播课，'
 
     if grade > 100:
-        str2 = '但是作业还没有提交，尽量在今天完成，避免影响今天的课程'
-    elif grade < 60:
-        str2 = '然后作业已经改完了，但是没有及格，因为前两节知识是连贯的，所以如果有知识盲区一定要解决'
+        str2 = '但是作业还没完成，及时在APP内提交一下，我帮孩子批改/:moon'
+    elif grade < 50:
+        str2 = '然后作业已经改完了，但是错的比较多，明天课前15min按时来听习题讲解[Smart]'
     else:
-        str2 = '然后作业已经改完了，掌握的很不错，得了' + str(grade) + '分，加油~'
+        str2 = '然后作业已经改完了，今天的内容都吸收了，得了' + str(grade) + '分[Yeah!]'
 
-    str0 = '家长你好，和您反馈一下' + str(name) + '的物理学习情况：昨天学习的是功和功率，'
-    str3 = '^_^'
+    str0 = '家长你好，今天' + str(name) + '的物理课学习的重点是平抛运动，孩子中午'
+    str3 = ' '
 
     str_all = str0 + str1 + str2 + str3
 

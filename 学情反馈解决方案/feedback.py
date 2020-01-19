@@ -5,6 +5,8 @@ from fun import *
 
 # 作业表uid+真实姓名+sum
 dfWork = pd.read_excel('./学情反馈解决方案/work.xls')
+dfLive = pd.read_excel('./学情反馈解决方案/live.xlsx')
+dfLive.rename(columns={'学员姓名':'真实姓名'},inplace=True)
 # 分数表=>sum
 dfGrade = pd.read_excel('./学情反馈解决方案/work.xls', usecols=[7, 8, 9, 10, 11, 12])
 dfGrade = dfGrade.replace('未提交', 1000)
@@ -17,6 +19,12 @@ path = os.path.dirname(os.path.abspath(__file__))
 output_file = os.path.join(path, 'dataWork.xlsx')
 dfWork.to_excel(output_file, index=False, engine="xlsxwriter")
 
+dfLive['live'] = dfLive.apply(lambda row: leftOfSlash(row['本节直播']), axis=1)
+
+dfAll = pd.merge(dfLive,dfWork.loc[:,['真实姓名','sum']])
+output_file = os.path.join(path, 'dfAll.xlsx')
+dfAll.to_excel(output_file, index=False, engine="xlsxwriter")
+
 ######
 #file0 = input("1.请确保学生基本信息表与本程序在同一目录下2.输入工作簿的文件名（不用输入.xlsx）然后按Enter进入下一步")
 # file_name = file0 + '.xlsx'
@@ -24,7 +32,7 @@ dfWork.to_excel(output_file, index=False, engine="xlsxwriter")
 print('打开该目录下的文件：feedback.xlsx')
 
 # 读取 pd.read_excel(r'D:/source.xlsx', usecols='A:D,H')
-df = pd.read_excel('./学情反馈解决方案/data.xlsx')          # 读取数据源表
+df = pd.read_excel('./学情反馈解决方案/dfAll.xlsx')          # 读取数据源表
 df[['live', 'sum']] = df[['live', 'sum']].astype(int)
 # df['未提交作业次数'] = df.apply(lambda row: DiffValue(row['作业提交']), axis=1)
 
