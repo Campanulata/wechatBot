@@ -20,7 +20,7 @@ df = df[['note','wxid']]
 df['note']=df['note'].str.replace('[^\u4e00-\u9fa5]','',regex=True)
 # 删除不需要的中文
 for i in replaceList:
-  df['note']=dft['note'].str.replace(i,'')
+  df['note']=df['note'].str.replace(i,'')
 # 存储为xlsx文件
 path = os.path.dirname(os.path.abspath(__file__))
 output_file = os.path.join(path, 'friendList.xlsx')
