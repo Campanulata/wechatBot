@@ -8,17 +8,14 @@
 
 ## 一、安装
 
-打开安装包文件夹，安装：
-
-* Setup_5.6.8.52.exe
-* vscode.exe
-* python.exe(安装时勾选Add Path to···)
+* 安装vscode[https://code.visualstudio.com/docs/?dv=win64user](https://code.visualstudio.com/docs/?dv=win64user)
+* 安装Python[https://www.liaoxuefeng.com/wiki/1016959663602400/1016959856222624](https://www.liaoxuefeng.com/wiki/1016959663602400/**1016959856222624**)
 
 ## 二、打开可爱猫微信
 
 1. 退出所有微信
 2. 打开 可爱猫.exe
-3. 此时会自动弹出微信 登录
+3. 此时会自动弹出微信 登录(可能会提示安装指定版本微信)
 4. 设置——关闭自动更新——关闭开机自启
 
 ## 三、其他文件说明
