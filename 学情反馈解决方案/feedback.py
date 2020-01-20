@@ -1,27 +1,34 @@
 import pandas as pd
+import numpy as np
 import os
 import xlsxwriter
 from fun import *
 
 # 作业表uid+真实姓名+sum
 dfWork = pd.read_excel('./学情反馈解决方案/work.xls')
-dfLive = pd.read_excel('./学情反馈解决方案/live.xlsx')
+dfLive = pd.read_excel('./学情反馈解决方案/live.xlsx',dtype={'学员uid':str})
 dfLive.rename(columns={'学员姓名':'真实姓名'},inplace=True)
+dfLive['本节直播']=dfLive['本节直播'].astype(str)
 # 分数表=>sum
 dfGrade = pd.read_excel('./学情反馈解决方案/work.xls', usecols=[7, 8, 9, 10, 11, 12])
 dfGrade = dfGrade.replace('未提交', 1000)
 dfGrade = dfGrade.astype(int)
 dfWork['sum'] = dfGrade.apply(lambda x: x.sum(), axis=1)
 dfWork.rename(columns={'学生uin':'学员uid'},inplace=True)
-print(dfWork)
-# 写入
-path = os.path.dirname(os.path.abspath(__file__))
-output_file = os.path.join(path, 'dataWork.xlsx')
-dfWork.to_excel(output_file, index=False, engine="xlsxwriter")
+dfWork['学员uid'] = dfWork['学员uid'].astype(str)
 
+dfLive=dfLive.dropna(thresh=2)
+dfLive['学员uid'] = dfLive['学员uid'].astype(str)
 dfLive['live'] = dfLive.apply(lambda row: leftOfSlash(row['本节直播']), axis=1)
+dfLive['学员uid'] = dfLive['学员uid'].astype(str)
+
+
+print(dfWork.dtypes)
 
 dfAll = pd.merge(dfLive,dfWork.loc[:,['真实姓名','sum']])
+# print(dfAll)
+dfAll['学员uid'] = dfAll['学员uid'].astype(str)
+path = os.path.dirname(os.path.abspath(__file__))
 output_file = os.path.join(path, 'dfAll.xlsx')
 dfAll.to_excel(output_file, index=False, engine="xlsxwriter")
 
@@ -42,7 +49,6 @@ print(df)
 # df_time = pd.read_excel('df_time.xlsx')     # 读取时间表
 # df_grade = pd.read_excel('df_grade.xlsx')   # 读取分数表
 # df = pd.merge(df,df_time.loc[:,['学号','核心课程第1节直播','核心课程第1节回放']],how='left',on = '学号') # vlookup 直播，回放时间
-df['live'].astype('int')
 # dfi = pd.merge(df, dfWork.loc[:, ['学员uid', 'sum']], how='left', on='学员uid')
 df['反馈'] = df.apply(lambda row:feedback(row['live'],row['sum'],row['真实姓名']),axis=1)
 # dfi['反馈1'] = dfi.apply(lambda row: salary(row['姓名'], row['未提交作业次数']), axis=1)
