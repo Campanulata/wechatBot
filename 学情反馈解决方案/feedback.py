@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import xlsxwriter
-from fun import *
+from fun import leftOfSlash
 
 # 作业表uid+真实姓名+sum
 dfWork = pd.read_excel('./学情反馈解决方案/work.xls')
